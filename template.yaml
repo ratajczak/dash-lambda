@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Sample SAM Template for Dash
+
+Resources:
+  Dash:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dash/app.lambda_handler
+      Runtime: python3.6
+      Events:
+        DashEndpoint:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+Outputs:
+  DashAppURL:
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/dash'
