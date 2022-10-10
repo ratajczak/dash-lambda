@@ -7,7 +7,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: dash/app.lambda_handler
-      Runtime: python3.6
+      Runtime: python3.9
       Events:
         DashEndpoint:
           Type: Api
